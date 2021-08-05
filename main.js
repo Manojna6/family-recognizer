@@ -20,6 +20,12 @@ function check() {
     img=document.getElementById("capture_image");
     classifier.classify(img, gotResult);
 }
-function gotResult() {
-    
+function gotResult(error, results) {
+    if (error){
+        console.log(error);
+    } else {
+        console.log(results);
+        document.getElementById('name').innerHTML = results[0].label;
+        document.getElementById('percent').innerHTML = results[0].confidence;
+    }
 }
